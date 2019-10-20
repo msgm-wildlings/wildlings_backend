@@ -18,7 +18,7 @@ namespace wildlings_backend.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Course> GetIncomeStatement(int month)
+        public IEnumerable<Statement> GetIncomeStatement(int month)
         {
             return _accountService.GetIncomeStatement();
         }
@@ -31,7 +31,7 @@ namespace wildlings_backend.Controllers
         public IEnumerable<Statement> GetIncomeStatement()
         {
             var statement = new Statement();
-
+            return null;
         }
     }
 
