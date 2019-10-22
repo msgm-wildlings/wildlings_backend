@@ -8,5 +8,6 @@ namespace wildlings_backend.Models.Service.Interface
         void Register(int customerId, int courseId);
         void Cancel(int customerId, int courseId);
         void Renew(int customerId, int courseId);
+        IEnumerable<Course> GetCustomerCourse(long id);
     }
 }

@@ -11,16 +11,6 @@ namespace wildlings_backend.Models.Repo
     {
         private wildlingsContext _db = new wildlingsContext();
 
-        public IEnumerable<Customer> GetAllCustomer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Customer GetCustomer(long id)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddCustomer(Customer customer)
         {
             if (IsUserExist(customer))
@@ -34,11 +24,15 @@ namespace wildlings_backend.Models.Repo
             });
         }
 
-        private bool IsUserExist(Customer customer)
+        public List<wildlings.Customer> GetAllCustomer()
         {
-            return _db.Customer.Count(x => x.Id == customer.Id) != 0;
+            return _db.Customer.ToList();
         }
 
+        public wildlings.Customer GetCustomer(long id)
+        {
+            return _db.Customer.FirstOrDefault(x => x.Id == id);
+        }
         public void UpdateCustomer(Customer customer)
         {
             if (!IsUserExist(customer))
@@ -50,6 +44,11 @@ namespace wildlings_backend.Models.Repo
             {
                 Id = customer.Id,
             });
+        }
+
+        private bool IsUserExist(Customer customer)
+        {
+            return _db.Customer.Count(x => x.Id == customer.Id) != 0;
         }
     }
 }

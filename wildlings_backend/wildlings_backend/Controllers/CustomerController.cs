@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using wildlings_backend.Models;
+using wildlings_backend.Models.Enum;
 using wildlings_backend.Models.Service;
 using wildlings_backend.Models.Service.Interface;
 
@@ -10,11 +12,13 @@ namespace wildlings_backend.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private ICustomerService _customerService;
+        private readonly ICustomerService _customerService;
+        private readonly ICourseService _courseService;
 
         public CustomerController()
         {
             _customerService = new CustomerService();
+            _courseService = new CourseService();
         }
 
         [HttpGet]
@@ -24,22 +28,26 @@ namespace wildlings_backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public Customer GetCustomer(long id)
+        public CustomerDetail GetCustomer(long id)
         {
-            return _customerService.GetCustomer(id);
+            var customer = _customerService.GetCustomer(id);
+            var customerCourse = _courseService.GetCustomerCourse(id);
+
+            var customerDetail = new CustomerDetail { Customer = customer, CourseDetail = customerCourse };
+            return customerDetail;
         }
 
-        //[HttpPost]
-        //public IActionResult AddCustomer(Customer customer)
-        //{
-        //    _customerService.AddCustomer(customer);
-        //    return Ok();
-        //}
-        //[HttpPost]
-        //public IActionResult UpdateCustomer(Customer customer)
-        //{
-        //    _customerService.UpdateCustomer(customer);
-        //    return Ok();
-        //}
+        [HttpPost("AddCustomer")]
+        public int AddCustomer(Customer customer)
+        {
+            _customerService.AddCustomer(customer);
+            return (int)ApiCode.Success;
+        }
+        [HttpPost("UpdateCustomer")]
+        public int UpdateCustomer(Customer customer)
+        {
+            _customerService.UpdateCustomer(customer);
+            return (int)ApiCode.Success;
+        }
     }
 }

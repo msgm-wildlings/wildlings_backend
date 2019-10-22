@@ -25,14 +25,16 @@ namespace wildlings_backend.Models.Repo
             },
         };
 
-        public IEnumerable<Customer> GetAllCustomer()
+        public List<wildlings.Customer> GetAllCustomer()
         {
-            return _allCustomer;
+            //return _allCustomer;
+            return null;
         }
 
-        public Customer GetCustomer(long id)
+        public wildlings.Customer GetCustomer(long id)
         {
-            return _allCustomer.FirstOrDefault(x => x.Id == id);
+            //return _allCustomer.FirstOrDefault(x => x.Id == id);
+            return null;
         }
 
         public void AddCustomer(Customer customer)

@@ -4,9 +4,9 @@ namespace wildlings_backend.Models.Repo.Interface
 {
     public interface ICustomerRepo
     {
-        IEnumerable<Customer> GetAllCustomer();
+        List<wildlings.Customer> GetAllCustomer();
 
-        Customer GetCustomer(long id);
+        wildlings.Customer GetCustomer(long id);
         void AddCustomer(Customer customer);
         void UpdateCustomer(Customer customer);
     }
