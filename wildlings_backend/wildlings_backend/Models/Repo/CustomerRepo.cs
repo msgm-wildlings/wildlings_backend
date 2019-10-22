@@ -35,7 +35,7 @@ namespace wildlings_backend.Models.Repo
                 _db.SaveChanges();
                 t.Commit();
             }
-           
+
         }
 
         public List<wildlings.Customer> GetAllCustomer()
@@ -54,10 +54,13 @@ namespace wildlings_backend.Models.Repo
                 throw new UpdateCustomerException();
             }
 
-            _db.Customer.Update(new wildlings.Customer
+            using (var t = _db.Database.BeginTransaction())
             {
-                Id = customer.Id,
-            });
+                var origin = _db.Customer.Find(customer.Id);
+                _db.Entry(origin).CurrentValues.SetValues(customer);
+                _db.SaveChanges();
+                t.Commit();
+            }
         }
 
         private bool IsUserExist(Customer customer)
