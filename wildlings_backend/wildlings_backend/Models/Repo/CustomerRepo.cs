@@ -18,10 +18,24 @@ namespace wildlings_backend.Models.Repo
                 throw new AddCustomerException();
             }
 
-            _db.Customer.Add(new wildlings.Customer
+            using (var t = _db.Database.BeginTransaction())
             {
-                Id = customer.Id,
-            });
+                _db.Customer.Add(new wildlings.Customer
+                {
+                    Id = customer.Id,
+                    Name = customer.Name,
+                    Address = customer.Address,
+                    Email = customer.Email,
+                    PersonalId = customer.PersonalId,
+                    Birthday = customer.Birthday,
+                    Phone = customer.Phone,
+                    EmergencyContact = customer.EmergencyContact,
+                    EmergencyPhone = customer.EmergencyPhone
+                });
+                _db.SaveChanges();
+                t.Commit();
+            }
+           
         }
 
         public List<wildlings.Customer> GetAllCustomer()
