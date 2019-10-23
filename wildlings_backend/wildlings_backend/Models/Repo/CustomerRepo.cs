@@ -30,7 +30,14 @@ namespace wildlings_backend.Models.Repo
                     Birthday = customer.Birthday,
                     Phone = customer.Phone,
                     EmergencyContact = customer.EmergencyContact,
-                    EmergencyPhone = customer.EmergencyPhone
+                    EmergencyPhone = customer.EmergencyPhone,
+                    CreateOn = DateTime.Now,
+                    ModifiedOn = DateTime.Now,
+                    GuardianName = customer.GuardianName,
+                    GuardianPersonalId = customer.GuardianPersonalId,
+                    GuardianPhone = customer.GuardianPhone,
+                    GuardianBirthday = customer.GuardianBirthday,
+                    MedicalCase = customer.MedicalCase
                 });
                 _db.SaveChanges();
                 t.Commit();
