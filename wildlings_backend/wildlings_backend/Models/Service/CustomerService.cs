@@ -8,7 +8,7 @@ namespace wildlings_backend.Models.Service
 {
     public class CustomerService : ICustomerService
     {
-        private ICustomerRepo _customerRepo = new CustomerRepo();
+        private ICustomerRepo _customerRepo = new FakeCustomerRepo();
 
         public IEnumerable<Customer> GetAllCustomer()
         {
@@ -25,8 +25,16 @@ namespace wildlings_backend.Models.Service
                 Name = customer.Name,
                 PersonalId = customer.Name,
                 Email = customer.Email,
-                Address = customer.Address
-
+                Address = customer.Address,
+                Phone = customer.Phone,
+                Birthday = customer.Birthday,
+                EmergencyContact = customer.EmergencyContact,
+                EmergencyPhone = customer.EmergencyPhone,
+                GuardianBirthday = customer.GuardianBirthday,
+                GuardianPhone = customer.GuardianPhone,
+                GuardianName = customer.GuardianName,
+                GuardianPersonalId = customer.GuardianPersonalId,
+                MedicalCase = customer.MedicalCase
             }; ;
         }
 
