@@ -44,6 +44,8 @@ namespace wildlings_backend.wildlings
 
                 entity.Property(e => e.Birthday).HasColumnType("date");
 
+                entity.Property(e => e.CreateOn).HasDefaultValueSql("CURRENT_TIMESTAMP");
+
                 entity.Property(e => e.Email)
                     .HasMaxLength(100)
                     .IsUnicode(false);
@@ -57,6 +59,24 @@ namespace wildlings_backend.wildlings
                     .IsRequired()
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.GuardianName)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.GuardianPersonalId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.GuardianPhone)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MedicalCase)
+                    .HasMaxLength(45)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedOn).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
