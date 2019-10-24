@@ -22,7 +22,7 @@ namespace wildlings_backend.wildlings
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=asdf1234;database=wildlings");
+                optionsBuilder.UseMySQL("server=localhost;port=3307;user=root;password=asdf1234;database=wildlings");
             }
         }
 
