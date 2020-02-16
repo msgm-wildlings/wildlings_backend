@@ -9,5 +9,10 @@ namespace wildlings_backend.Models.Service.Interface
         {
             throw new System.NotImplementedException();
         }
+
+        public IEnumerable<Course> GetCourse()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

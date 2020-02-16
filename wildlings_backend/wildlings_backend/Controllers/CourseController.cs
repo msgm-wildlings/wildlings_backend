@@ -1,47 +1,47 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using System.Collections.Generic;
-//using wildlings_backend.Models;
-//using wildlings_backend.Models.Service;
-//using wildlings_backend.Models.Service.Interface;
-//System.NotSupportedException: Ambiguous HTTP method for action
-//namespace wildlings_backend.Controllers
-//{
-//    [Route("api/[controller]")]
-//    [ApiController]
-//    public class CourseController : ControllerBase
-//    {
-//        private CourseService _courseService;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using wildlings_backend.Models;
+using wildlings_backend.Models.Enum;
+using wildlings_backend.Models.Service;
+using wildlings_backend.Models.Service.Interface;
 
-//        public CourseController()
-//        {
-//            _courseService = new CourseService();
-//        }
+namespace wildlings_backend.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CourseController : ControllerBase
+    {
+        private readonly ICourseService _courseService;
 
-//        [HttpGet]
-//        public IEnumerable<Course> GetCourse()
-//        {
-//            return _courseService.GetAllCourse();
-//        }
+        public CourseController()
+        {
+            _courseService = new CourseService();
+        }
 
-//        [HttpPost]
-//        public IActionResult Register(int customerId, int courseId)
-//        {
-//            _courseService.Register(customerId, courseId);
-//            return Ok();
-//        }
-//        [HttpPost]
-//        public IActionResult Cancel(int customerId, int courseId)
-//        {
-//            _courseService.Cancel(customerId, courseId);
+        [HttpGet]
+        public IEnumerable<Course> GetCourse()
+        {
+            return _courseService.GetAllCourse();
+        }
 
-//            return Ok();
-//        }
-//        [HttpPost]
-//        public IActionResult Renew(int customerId, int courseId)
-//        {
-//            _courseService.Renew(customerId, courseId);
+        [HttpPost("DeductCourse")]
+        public IActionResult DeductCourse(int customerId, EnumCourse courseId)
+        {
+            _courseService.DeductCourse(customerId, courseId);
+            return Ok();
+        }
 
-//            return Ok();
-//        }
-//    }
-//}
+        [HttpPost("RegisterByCount")]
+        public IActionResult RegisterByCount(int customerId, int courseId, int Count)
+        {
+            _courseService.RegisterByCount(customerId, courseId, Count);
+            return Ok();
+        }
+        [HttpPost("RegisterByRange")]
+        public IActionResult RegisterByRange(int customerId, int courseId, Period period)
+        {
+            _courseService.RegisterByRange(customerId, courseId, period);
+            return Ok();
+        }
+    }
+}
