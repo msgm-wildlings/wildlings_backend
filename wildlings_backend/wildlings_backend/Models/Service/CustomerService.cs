@@ -8,8 +8,12 @@ namespace wildlings_backend.Models.Service
 {
     public class CustomerService : ICustomerService
     {
-        private ICustomerRepo _customerRepo = new FakeCustomerRepo();
+        private readonly ICustomerRepo _customerRepo ;
 
+        public CustomerService(ICustomerRepo customerRepo)
+        {
+            _customerRepo = customerRepo;
+        }
         public IEnumerable<Customer> GetAllCustomer()
         {
             return _customerRepo.GetAllCustomer().Select(x => new Customer() { Id = x.Id, Name = x.Name, PersonalId = x.PersonalId });

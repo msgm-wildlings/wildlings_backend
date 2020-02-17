@@ -2,7 +2,7 @@
 
 namespace wildlings_backend.Models.Service.Interface
 {
-    internal interface ICustomerService 
+    public interface ICustomerService 
     {
         IEnumerable<Customer> GetAllCustomer();
         Customer GetCustomer(long id);

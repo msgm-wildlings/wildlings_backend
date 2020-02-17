@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using wildlings_backend.Models.Repo;
+using wildlings_backend.Models.Repo.Interface;
+using wildlings_backend.Models.Service;
+using wildlings_backend.Models.Service.Interface;
 
 namespace wildlings_backend
 {
@@ -34,6 +38,11 @@ namespace wildlings_backend
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<ICustomerRepo, FakeCustomerRepo>();
+            services.AddSingleton<ICourseRepo, FakeCourseRep>();
+            services.AddSingleton<ICustomerService, CustomerService>();
+            services.AddSingleton<ICourseService, CourseService>();
+
 
             services.AddSwaggerGen(c =>
             {

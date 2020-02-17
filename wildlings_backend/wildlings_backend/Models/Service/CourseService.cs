@@ -8,11 +8,11 @@ namespace wildlings_backend.Models.Service
 {
     public class CourseService : ICourseService
     {
-        private ICourseRepo _courseRepo;
+        private readonly ICourseRepo _courseRepo;
 
-        public CourseService()
+        public CourseService(ICourseRepo courseRepo)
         {
-            _courseRepo = new FakeCourseRep();
+            _courseRepo = courseRepo;
         }
 
         public void Register(int customerId, EnumCourse courseId)

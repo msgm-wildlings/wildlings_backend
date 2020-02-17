@@ -13,9 +13,9 @@ namespace wildlings_backend.Controllers
     {
         private readonly ICourseService _courseService;
 
-        public CourseController()
+        public CourseController(ICourseService courseService)
         {
-            _courseService = new CourseService();
+            _courseService = courseService;
         }
 
         [HttpGet]

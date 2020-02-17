@@ -15,10 +15,10 @@ namespace wildlings_backend.Controllers
         private readonly ICustomerService _customerService;
         private readonly ICourseService _courseService;
 
-        public CustomerController()
+        public CustomerController(ICourseService courseService, ICustomerService customerService)
         {
-            _customerService = new CustomerService();
-            _courseService = new CourseService();
+            _customerService = customerService;
+            _courseService = courseService;
         }
 
         [HttpGet]
