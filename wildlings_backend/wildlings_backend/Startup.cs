@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using wildlings_backend.Models.Repo;
+using wildlings_backend.Models.Repo.Fake;
 using wildlings_backend.Models.Repo.Interface;
 using wildlings_backend.Models.Service;
 using wildlings_backend.Models.Service.Interface;

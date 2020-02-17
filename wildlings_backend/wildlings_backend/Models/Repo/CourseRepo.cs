@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using wildlings_backend.Models.Repo.Interface;
 
-namespace wildlings_backend.Models.Service.Interface
+namespace wildlings_backend.Models.Repo
 {
     public class CourseRepo : ICourseRepo
     {

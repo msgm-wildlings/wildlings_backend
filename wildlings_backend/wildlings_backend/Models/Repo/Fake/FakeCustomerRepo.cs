@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using wildlings_backend.Models.Repo.Interface;
 
-namespace wildlings_backend.Models.Repo
+namespace wildlings_backend.Models.Repo.Fake
 {
     internal class FakeCustomerRepo : ICustomerRepo
     {
-        private List<wildlings.Customer> _allCustomer = new List<wildlings.Customer>()
+        private readonly List<wildlings.Customer> _allCustomer = new List<wildlings.Customer>()
         {
             new wildlings.Customer()
             {
